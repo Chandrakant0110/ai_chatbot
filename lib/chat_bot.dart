@@ -20,7 +20,7 @@ class _ChatBotState extends State<ChatBot> {
   ChatUser bot = ChatUser(id: '2', firstName: "AI");
 
   final url =
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyCDL4goG1S9TgOEAsQiI-TbdRm7IGfK6B0';
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=add-your-api-key-here';
   final headers = {'Content-Type': 'application/json'};
 
   getData(ChatMessage m) async {
