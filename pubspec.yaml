@@ -8,9 +8,14 @@ environment:
 
 dependencies:
   dash_chat_2: 0.0.19
+  dotenv: ^4.2.0
+  firebase_auth: ^4.16.0
+  firebase_core: ^2.24.2
   flutter:
     sdk: flutter
-  http: ^1.1.2
+  google_sign_in: 6.1.6
+  http: 1.1.0
+  package_info_plus: 4.2.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -19,3 +24,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+fonts:
+  - family: MontSerrat
+    fonts:
+      - asset: assets/fonts/Montserrat-Italic.ttf
+        style: italic
+      - asset: assets/fonts/fonts/Montserrat-ExtraBold.ttf
+        style: 800

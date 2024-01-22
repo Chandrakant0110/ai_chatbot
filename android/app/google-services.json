@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "458560226174",
+    "project_id": "ai-bot-be61d",
+    "storage_bucket": "ai-bot-be61d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458560226174:android:ad6cd1ce594e2ba112292f",
+        "android_client_info": {
+          "package_name": "com.example.ai_chatbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "458560226174-c47uh25t06skh1rnm7id5g4uefuehmr3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ai_chatbot",
+            "certificate_hash": "465453932c0b2b4be7ec8b82cba22608e43ee644"
+          }
+        },
+        {
+          "client_id": "458560226174-0reltugq4caccvrs6jf8n5a8hgfngk6u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUtB3nu31ll-nRM7vDoF_dXD3yL6kylKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "458560226174-0reltugq4caccvrs6jf8n5a8hgfngk6u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

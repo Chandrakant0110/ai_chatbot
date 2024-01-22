@@ -1,7 +1,24 @@
 import 'package:ai_chatbot/chat_bot.dart';
+import 'package:ai_chatbot/firebase_options.dart';
+import 'package:ai_chatbot/getPackage.dart';
+import 'package:ai_chatbot/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    print("Firebase initialized successfully");
+  } catch (e) {
+    print("Firebase initialization error: $e");
+  }
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(const MainApp());
 }
 
@@ -12,8 +29,28 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AI ChatBot',
+      theme: ThemeData.light(useMaterial3: true),
       debugShowCheckedModeBanner: false,
-      home: ChatBot(),
+      // home: const PackageInfoScreen(),
+      home: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        //... Rest of the StreamBuilder code
+
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            if (snapshot.data == null) {
+              return LoginPage();
+            } else {
+              return ChatBot();
+              // return Text(snapshot.data);
+            }
+          } else if (snapshot.hasError) {
+            return Text(snapshot.error.toString());
+          } else {
+            return CircularProgressIndicator();
+          }
+        },
+      ),
     );
   }
 }

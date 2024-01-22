@@ -19,7 +19,6 @@ class _ChatBotState extends State<ChatBot> {
       ChatUser(id: '1', firstName: "Chandrakant", lastName: "Sahu");
   ChatUser bot = ChatUser(id: '2', firstName: "AI");
 
-  String apiKey = "AIzaSyCDL4goG1S9TgOEAsQiI-TbdRm7IGfK6B0";
   final url =
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyCDL4goG1S9TgOEAsQiI-TbdRm7IGfK6B0';
   final headers = {'Content-Type': 'application/json'};
@@ -50,7 +49,6 @@ class _ChatBotState extends State<ChatBot> {
         if (value.statusCode == 200) {
           var result = jsonDecode(value.body);
           print(result['candidates'][0]['content']['parts'][0]['text']);
-
           ChatMessage m1 = ChatMessage(
             user: bot,
             createdAt: DateTime.now(),
@@ -74,10 +72,16 @@ class _ChatBotState extends State<ChatBot> {
       appBar: AppBar(
         elevation: 0,
         title: const Center(
-            child: Text(
-          "AI ChatBot",
-        )),
+          child: Text(
+            'AI ChatBot',
+            style: TextStyle(
+              fontFamily: 'MontSerrat',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
+      // bottomNavigationBar: Text('bottom Navigation Bar'),
       body: DashChat(
         typingUsers: typing,
         currentUser: sender,
