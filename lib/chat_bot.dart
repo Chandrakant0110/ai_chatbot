@@ -1,6 +1,12 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
+import 'package:ai_chatbot/secrets.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,8 +25,17 @@ class _ChatBotState extends State<ChatBot> {
       ChatUser(id: '1', firstName: "Chandrakant", lastName: "Sahu");
   ChatUser bot = ChatUser(id: '2', firstName: "AI");
 
-  final url =
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=add-your-api-key-here';
+  late final apiKey;
+  late final url;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    apiKey = Secrets().GEMINI_API_KEY;
+    url =
+        'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=$apiKey';
+  }
+
   final headers = {'Content-Type': 'application/json'};
 
   getData(ChatMessage m) async {
@@ -66,11 +81,14 @@ class _ChatBotState extends State<ChatBot> {
     setState(() {});
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        centerTitle: true,
         title: const Center(
           child: Text(
             'AI ChatBot',
@@ -89,6 +107,14 @@ class _ChatBotState extends State<ChatBot> {
           getData(m);
         },
         messages: messages,
+        inputOptions: InputOptions(
+          trailing: <Widget>[
+            IconButton(
+              icon: Icon(Icons.photo),
+              onPressed: () {},
+            )
+          ],
+        ),
       ),
     );
   }
