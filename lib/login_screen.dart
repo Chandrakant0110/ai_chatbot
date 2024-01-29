@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final rec = 0;
-  
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
           await FirebaseAuth.instance.signInWithCredential(credential);
 
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ChatBot()));
+          context, MaterialPageRoute(builder: (context) => const ChatBot()));
 
       print(userCredential.user?.displayName);
       print(userCredential.user?.email);
